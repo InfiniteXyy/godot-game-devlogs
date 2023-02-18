@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgqp3kerbljlb"]
+
+[ext_resource type="PackedScene" uid="uid://bri40f6f8quy7" path="res://win.tscn" id="1_46t8m"]
+
+[node name="Lose" instance=ExtResource("1_46t8m")]
+
+[node name="CanvasModulate" parent="." index="0"]
+color = Color(0.74902, 0, 0, 0.643137)
+
+[node name="Label" parent="WinLayer/VBoxContainer" index="0"]
+text = ""

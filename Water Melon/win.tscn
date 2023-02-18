@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://bri40f6f8quy7"]
+
+[ext_resource type="Script" path="res://button.gd" id="1_cl3s7"]
+
+[node name="Win" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.658824, 0.847059, 0.72549, 1)
+
+[node name="WinLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinLayer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_right = 201.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Label" type="Label" parent="WinLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 150
+text = "合成大西瓜！
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="WinLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "再试一次"
+script = ExtResource("1_cl3s7")
+
+[connection signal="pressed" from="WinLayer/VBoxContainer/Button" to="WinLayer/VBoxContainer/Button" method="_on_pressed"]
