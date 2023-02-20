@@ -1,9 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://bwxq5jw21a4ro"]
+[gd_scene load_steps=16 format=3 uid="uid://bwxq5jw21a4ro"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_4x5po"]
 [ext_resource type="Texture2D" uid="uid://cnt7wxwl378pr" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="2_7w8iq"]
 [ext_resource type="Texture2D" uid="uid://csvjykank7674" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="3_7ju8m"]
-[ext_resource type="Shader" path="res://light.gdshader" id="5_00aga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onhbq"]
 size = Vector2(1668, 758.5)
@@ -533,62 +532,6 @@ texture = ExtResource("3_7ju8m")
 [sub_resource type="TileSet" id="TileSet_a5gdn"]
 sources/0 = SubResource("TileSetAtlasSource_v15qx")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cjxst"]
-shader = ExtResource("5_00aga")
-shader_parameter/angle = -0.3
-shader_parameter/position = -0.2
-shader_parameter/spread = 0.426
-shader_parameter/cutoff = 0.136
-shader_parameter/falloff = 0.528
-shader_parameter/edge_fade = 0.433
-shader_parameter/speed = 1.0
-shader_parameter/ray1_density = 8.0
-shader_parameter/ray2_density = 30.0
-shader_parameter/ray2_intensity = 0.381
-shader_parameter/color = Quaternion(1, 0.9, 0.65, 0.8)
-shader_parameter/hdr = false
-shader_parameter/seed = 5.0
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_ce3cq"]
-
-[sub_resource type="Animation" id="Animation_0mxq6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/ray2_intensity")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.381]
-}
-
-[sub_resource type="Animation" id="Animation_lyvu3"]
-resource_name = "lighting"
-length = 6.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/ray2_intensity")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.9, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.381, 0.277, 0.167]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2kt11"]
-_data = {
-"RESET": SubResource("Animation_0mxq6"),
-"lighting": SubResource("Animation_lyvu3")
-}
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_4x5po")
 start_pos_y = 280.0
@@ -674,17 +617,5 @@ layer_0/z_index = -1
 layer_0/tile_data = PackedInt32Array(3801088, 65536, 0, 3866624, 65536, 1, 3932160, 65536, 2, 3801089, 196608, 0, 3866625, 65536, 1, 3932161, 65536, 2, 3801090, 196608, 0, 3866626, 196608, 1, 3932162, 65536, 2, 3801091, 196608, 0, 3866627, 65536, 1, 3932163, 131072, 2, 3801092, 65536, 0, 3866628, 65536, 1, 3932164, 65536, 2, 3801093, 65536, 0, 3866629, 196608, 1, 3932165, 196608, 2, 3801094, 131072, 0, 3866630, 131072, 1, 3932166, 196608, 2, 3801095, 196608, 0, 3866631, 196608, 1, 3932167, 131072, 2, 3801096, 196608, 0, 3866632, 196608, 1, 3932168, 196608, 2, 3866623, 65536, 0, 3932159, 65536, 1, 3997695, 131072, 2, 4063231, 131072, 2, 4128767, 196608, 3, 3997696, 65536, 3, 4063232, 131072, 3, 3997697, 131072, 3, 4063233, 196608, 3, 3997698, 131072, 3, 4063234, 65536, 3, 3997699, 131072, 3, 4063235, 131072, 3, 3997700, 65536, 3, 4063236, 196608, 3, 3997701, 65536, 3, 4063237, 65536, 3, 3997702, 131072, 3, 4063238, 131072, 3, 3997703, 131072, 3, 4063239, 196608, 3, 3997704, 196608, 3, 4063240, 65536, 3, 3866622, 0, 0, 3932158, 0, 1, 3997694, 65536, 2, 4063230, 65536, 2, 3866633, 262144, 1, 3932169, 262144, 2, 3997705, 262144, 3, 3801097, 262144, 0, 4063241, 131072, 3, 4063242, 196608, 3, 4128765, 65536, 3, 4128766, 131072, 3)
 
 [node name="Timer" type="Timer" parent="."]
-
-[node name="Light" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_cjxst")
-position = Vector2(653.75, 997.25)
-scale = Vector2(1308.5, 1995.5)
-texture = SubResource("CanvasTexture_ce3cq")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Light"]
-autoplay = "lighting"
-libraries = {
-"": SubResource("AnimationLibrary_2kt11")
-}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

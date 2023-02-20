@@ -7,8 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://d0qs6r5oollq6" path="res://music/knock.mp3" id="5_qh7fa"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8es0m"]
-rough = true
-bounce = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_04rk4"]
 radius = 26.0
