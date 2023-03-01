@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7sybtwb3j8se"]
+
+[ext_resource type="PackedScene" uid="uid://b1ww4ow48wj8o" path="res://player.tscn" id="1_0bouj"]
+[ext_resource type="Script" path="res://level.gd" id="1_fl3nv"]
+[ext_resource type="Texture2D" uid="uid://bqahvw1ono4qs" path="res://icon.svg" id="3_nkdvl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6q1j5"]
+size = Vector2(1307, 74)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_fl3nv")
+
+[node name="Player" parent="." instance=ExtResource("1_0bouj")]
+position = Vector2(382, 411)
+
+[node name="Icon" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(553, 288)
+scale = Vector2(14.0938, 7.15625)
+texture = ExtResource("3_nkdvl")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(586, 688)
+shape = SubResource("RectangleShape2D_6q1j5")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.768627, 0.141176, 0.168627, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_right = 300.0
+offset_bottom = 129.0
+theme_override_font_sizes/font_size = 88
+text = "Reload"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
